@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+		<link rel="icon" type="image/png" href="{% static '/favicon.png' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'editor.css' %}">
+		<script src="{% static '/editor.js' %}" defer></script>
+		<style>
+			.backtotop {
+				background: url("{% static '/back-to-top.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-delete {
+				background: url("{% static '/editor/images/delete.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-up {
+				background: url("{% static '/editor/images/up.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-down {
+				background: url("{% static '/editor/images/down.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-edit {
+				background-image: url("{% static '/editor/images/edit.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-new {
+				background: url("{% static '/editor/images/new.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-subitem {
+				background: url("{% static '/editor/images/subitem.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-close {
+				background: url("{% static '/editor/images/close.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-check {
+				background: url("{% static '/editor/images/check.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-save {
+				background: url("{% static '/editor/images/save.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.editor-download {
+				background: url("{% static '/editor/images/download.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			#backtotop {
+				background: url("{% static '/back-to-top.svg' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			#faviconinput {
+				background-image: url("{% static '/favicon.png' %}");
+			}
+		</style>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		<div class="pageheader">
+			{% block header %}
+<a href="/" id="headericonlink" contenteditable="false">
+						<img src="http://127.0.0.1:8000/staticfiles/favicon.png?1670260419081?1670260430875" id="headericon" width="50" height="50">
+					</a><a href="/" id="headerlink" contenteditable="false">
+					<div>
+						<p href="/" style="color:#fff; margin-block: 0px; font-family: Helvetica, Arial, sans-serif; font-weight: 650; line-height: 16px;" contenteditable="false">A Website<br></p>
+						<p href="/" style="color:#dedede; margin-block: 0px;font-family: Helvetica, Arial, sans-serif; font-weight: 100;" contenteditable="false">Because why not?<br></p>
+					</div>
+				</a>
+{% endblock %}
+		</div>
+		<div class="pagecontent">
+			{% block content %}{% endblock %}
+		</div>
+
+		<button title="Back to top" id="backtotop" style="display: inline-block;"></button>
+		<script>
+			var csrftoken = "{{ csrf_token }}"; 
+		</script>
+		<script>
+			button = document.getElementById("backtotop")
+			button.onclick = () => { window.scrollTo({ top: 100, behavior: 'smooth' }) }
+			button.style.opacity = "0.1";
+			window.onscroll = function() {scrollFunction()};
+			function scrollFunction() {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					button.style.opacity = "1";
+				} else {
+					button.style.opacity = "0.1";
+				}
+			}
+		</script>
+
+		<div class="pagefooter">
+			{% block footer %}
+<p class="footertext" contenteditable="false">This page is totally legit. No questions asked.<br></p>
+{% endblock %}
+		</div>
+	</body>
+</html>
